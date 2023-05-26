@@ -8,7 +8,6 @@ from elevenlabslib.helpers import *
 from elevenlabslib import *
 
 
-
 ##
 # Danomation
 # GitHub: https://github.com/danomation
@@ -82,29 +81,27 @@ async def on_message(message):
     description='Replies to your questions in Voice Chat',
     pass_context=True,
 )
-async def gpt(context):
+async def gpt(ctx):
     #only handle text from the GPT-Voice channel
-    if context.message.channel.id != discord_target_channel_id:
+    if ctx.message.channel.id != discord_target_channel_id:
         return
-    #grab the voice channel the user is connected to
-    channel = context.message.author.voice.channel
+    #auto-detect voice channel
+    channel = ctx.message.author.voice.channel
     if not channel:
-        await context.send("You are not connected to a voice channel")
+        await ctx.send("You are not connected to a voice channel")
         return
-    voice = get(bot.voice_clients, guild=context.guild)
+    voice = get(bot.voice_clients, guild=ctx.guild)
     if voice and voice.is_connected():
         await voice.move_to(channel)
     else:
         voice = await channel.connect()
-    print(context.message.content)
-    source = FFmpegPCMAudio(sendtts(sendgpt(str(context.message.content), str(context.message.author))))
+    print(ctx.message.content)
+    source = FFmpegPCMAudio(sendtts(sendgpt(str(ctx.message.content), str(ctx.message.author))))
     try:
         voice.play(source)
     except:
-        await context.message.reply("Wait a few...")
+        await ctx.message.reply("Wait a few...")
 
 
 
 bot.run(discord_api_token)
-
-
