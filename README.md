@@ -1,5 +1,6 @@
 # GPT-4-Discord-Voice
 Simple Discord Voice Bot proof of concept
+GPT4 + ElevenLabs -> Discord Voice Bot
 ##
 # Danomation
 # GitHub: https://github.com/danomation
