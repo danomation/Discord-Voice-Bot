@@ -4,6 +4,9 @@ from gtts import gTTS
 from discord.ext import commands
 from discord import FFmpegPCMAudio
 from discord.utils import get
+from elevenlabslib.helpers import *
+from elevenlabslib import *
+
 
 
 ##
@@ -11,8 +14,9 @@ from discord.utils import get
 # GitHub: https://github.com/danomation
 # Personal Site: sussyvr.com
 # Patreon https://www.patreon.com/Wintermute310
-# I'm broke as hell please donate xd! Anything helps
+# I'm broke as hell please donate xd
 ##
+
 
 ##
 # Project GPT-Voice
@@ -23,11 +27,11 @@ from discord.utils import get
 # instructions: Add your openai api key and bot api token
 # set the target channel id for where to ask it questions with "!GPT message here"
 openai.api_key = "OPENAI API Key"
+elevenlabs_api_key = "Elevenlabs API Key"
 discord_api_token = 'Your Discord Bot Token'
 discord_target_channel_id = "Which discord channel id do you wanna use? Add it here without quotes"
 
 prefix = "!"
-#yeah I set it as all. Please limit based on what you're trying to do with this
 intents = discord.Intents().all()
 bot = commands.Bot(command_prefix=prefix, intents=intents)
 
@@ -40,7 +44,6 @@ def sendgpt(message, author):
         cookedmessage += rawmsg
 
     response = openai.ChatCompletion.create(
-    #Note: switch back to 3.5-turbo for cheapness
     #model = "gpt-3.5-turbo",
     model="gpt-4",
     messages = [
@@ -56,9 +59,17 @@ def sendgpt(message, author):
 
 
 def sendtts(message):
-    tts = gTTS(message, tld='co.uk')
-    tts.save("./1.mp3")
-    return "./1.mp3"
+    ## google tts option
+    #tts = gTTS(message, tld='co.uk')
+    #tts.save("./1.mp3")
+    #return "./1.mp3"
+
+    ##begin test of elevenlabs
+    user = ElevenLabsUser(elevenlabs_api_key)  # fill in your api key as a string
+    voice = user.get_voices_by_name("Rachel")[0]  # fill in the name of the voice you want to use. ex: "Rachel"
+    mp3Data = voice.generate_play_audio(message, playInBackground=False)
+    save_audio_bytes(mp3Data, "./2.mp3", "ogg")
+    return "./2.mp3"
 
 
 @bot.event
@@ -71,26 +82,29 @@ async def on_message(message):
     description='Replies to your questions in Voice Chat',
     pass_context=True,
 )
-async def gpt(ctx):
+async def gpt(context):
     #only handle text from the GPT-Voice channel
-    if ctx.message.channel.id != discord_target_channel_id:
+    if context.message.channel.id != discord_target_channel_id:
         return
-    #Voice channel the user is using
-    channel = ctx.message.author.voice.channel
+    #grab the voice channel the user is connected to
+    channel = context.message.author.voice.channel
     if not channel:
-        await ctx.send("You are not connected to a voice channel")
+        await context.send("You are not connected to a voice channel")
         return
-    voice = get(bot.voice_clients, guild=ctx.guild)
+    voice = get(bot.voice_clients, guild=context.guild)
     if voice and voice.is_connected():
         await voice.move_to(channel)
     else:
         voice = await channel.connect()
-    print(ctx.message.content)
-    source = FFmpegPCMAudio(sendtts(sendgpt(str(ctx.message.content), str(ctx.message.author))))
+    print(context.message.content)
+    source = FFmpegPCMAudio(sendtts(sendgpt(str(context.message.content), str(context.message.author))))
     try:
         voice.play(source)
     except:
-        await ctx.message.reply("Wait a few...")
+        await context.message.reply("Wait a few...")
+
 
 
 bot.run(discord_api_token)
+
+
