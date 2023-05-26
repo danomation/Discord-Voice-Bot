@@ -1,5 +1,5 @@
-# GPT-Voice
-GPT-4-Discord-Voice-Bot
+# GPT-4-Discord-Voice
+Simple Discord Voice Bot proof of concept
 ##
 # Danomation
 # GitHub: https://github.com/danomation
