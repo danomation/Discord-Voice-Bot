@@ -8,7 +8,7 @@ Danomation
     I'm broke as hell please donate xd  
   
 # Install Notes
-(debian)
+debian:
     sudo apt install ffmpeg  
     pip install elevenlabs  
     pip install elevenlabslib  
