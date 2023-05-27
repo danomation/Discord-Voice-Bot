@@ -15,7 +15,7 @@ from elevenlabs import generate, save
 #
 # Danomation
 # GitHub: https://github.com/danomation
-# Personal Site: sussyvr.com
+# Personal Site: https://sussyvr.com
 # Patreon https://www.patreon.com/Wintermute310
 # I'm broke as hell please donate xd
 ##
