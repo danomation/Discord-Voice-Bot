@@ -5,8 +5,8 @@ from gtts import gTTS
 from discord.ext import commands
 from discord import FFmpegPCMAudio
 from discord.utils import get
-from elevenlabslib.helpers import *
-from elevenlabslib import *
+#from elevenlabslib.helpers import *
+#from elevenlabslib import *
 from elevenlabs import generate, save
 
 ##
