@@ -1,3 +1,4 @@
+
 import openai
 import discord
 from gtts import gTTS
@@ -6,21 +7,17 @@ from discord import FFmpegPCMAudio
 from discord.utils import get
 from elevenlabslib.helpers import *
 from elevenlabslib import *
-
+from elevenlabs import generate, save
 
 ##
+# Project GPT-Voice
+# May not Work! VERY basic and buggy use at your own risk and NOT in production!
+#
 # Danomation
 # GitHub: https://github.com/danomation
 # Personal Site: sussyvr.com
 # Patreon https://www.patreon.com/Wintermute310
 # I'm broke as hell please donate xd
-##
-
-
-##
-# Project GPT-Voice
-# very first proof of concept
-# VERY basic and buggy use at your own risk and NOT in production!
 ##
 
 # instructions: Add your openai api key and bot api token
@@ -64,12 +61,12 @@ def sendtts(message):
     #return "./1.mp3"
 
     ##begin test of elevenlabs
-    user = ElevenLabsUser(elevenlabs_api_key)  # fill in your api key as a string
-    voice = user.get_voices_by_name("Rachel")[0]  # fill in the name of the voice you want to use. ex: "Rachel"
-    mp3Data = voice.generate_play_audio(message, playInBackground=False)
-    save_audio_bytes(mp3Data, "./2.mp3", "ogg")
+    audio = generate(
+    text=message,
+    voice="Rachel",
+    )
+    save(audio, "./2.mp3")
     return "./2.mp3"
-
 
 @bot.event
 async def on_message(message):
@@ -101,7 +98,6 @@ async def gpt(ctx):
         voice.play(source)
     except:
         await ctx.message.reply("Wait a few...")
-
 
 
 bot.run(discord_api_token)
