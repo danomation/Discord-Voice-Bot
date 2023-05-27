@@ -8,11 +8,11 @@ Danomation
     I'm broke as hell please donate xd  
   
 # Install Notes
-debian:
+debian:  
     sudo apt install ffmpeg  
     pip install elevenlabs  
     pip install elevenlabslib  
     sudo apt-get install libportaudio2  
     sudo apt-get install python3-pyaudio  
     python3 -m pip install -U discord.py  
-    pip install gTTS (Optional for free TTS support)  
+    pip install gTTS
