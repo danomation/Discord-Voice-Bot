@@ -15,3 +15,4 @@ Danomation
     sudo apt-get install libportaudio2  
     sudo apt-get install python3-pyaudio  
     python3 -m pip install -U discord.py  
+    pip install gTTS (Optional for free TTS support)  
