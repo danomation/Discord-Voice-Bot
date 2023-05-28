@@ -63,7 +63,7 @@ client = discord.Client(intents=discord.Intents.all())
 @client.event
 async def on_ready():
     window = sg.Window('Voice Proxy', layout, grab_anywhere=True, size=(290, 100))
-    voice = await client.get_channel(your_voice_channel_num).connect()
+    voice = await client.get_channel(discord_target_channel_id).connect()
     while True:
         event, values = window.read()
 
