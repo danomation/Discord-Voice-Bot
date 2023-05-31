@@ -10,7 +10,6 @@ Danomation
 # Install Notes
 debian:  
     sudo apt install ffmpeg  
-    pip install discord
     pip install elevenlabs  
     pip install elevenlabslib  
     sudo apt-get install libportaudio2  
