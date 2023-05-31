@@ -18,5 +18,5 @@ debian:
     pip install gTTS  
   
 # Todo
-:
+Todo:
     Change needed to await async calls in discord properly
