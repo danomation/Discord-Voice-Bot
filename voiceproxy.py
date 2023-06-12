@@ -22,6 +22,8 @@ from pydub import AudioSegment
 # I'm broke as hell please donate xd
 ##
 
+# This file is STT -> TTS -> discord voice channel
+
 #set your tts provider:
 # valid options are "google" or "elevenlabs"
 tts_provider = "elevenlabs"
