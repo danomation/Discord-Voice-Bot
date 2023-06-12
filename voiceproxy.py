@@ -1,3 +1,8 @@
+##
+# Disclaimer. This only works once before it crashes. I tried a lot of different things to get it to work but so far it's been wasted time.
+##
+
+
 import openai
 import discord
 from gtts import gTTS
