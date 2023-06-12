@@ -27,4 +27,8 @@ Todo:
 
 bot.py:  
     Reply-To-Command demo  
-    https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/4b87fb6d-f9f9-4029-af37-d4dc096df6a8
+
+
+
+https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/b300c993-d208-4a13-9378-da38bd07beb8
+
