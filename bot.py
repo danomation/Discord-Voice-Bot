@@ -8,9 +8,12 @@ from discord.utils import get
 #from elevenlabslib.helpers import *
 #from elevenlabslib import *
 from elevenlabs import generate, save
+from elevenlabs import set_api_key
 
 ##
 # Project GPT-Voice
+# This python file takes in a command !gpt texthere, sends to gpt-4, then replies with elevenlabs
+#
 # May not Work! VERY basic and buggy use at your own risk and NOT in production!
 #
 # Danomation
@@ -24,6 +27,7 @@ from elevenlabs import generate, save
 # set the target channel id for where to ask it questions with "!GPT message here"
 openai.api_key = "OPENAI API Key"
 elevenlabs_api_key = "Elevenlabs API Key"
+set_api_key(elevenlabs_api_key)
 discord_api_token = 'Your Discord Bot Token'
 discord_target_channel_id = "Which discord channel id do you wanna use? Add it here without quotes"
 
