@@ -26,7 +26,7 @@ Todo:
 
 
 bot.py:  
-    Create a discord bot and grant it voice access. Some basic details.  
+    Requirements: Create a discord bot and grant it voice access. Some basic details.  
     https://discordpy.readthedocs.io/en/stable/discord.html  
     Reply-To-Command demo  
 
