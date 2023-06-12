@@ -47,7 +47,7 @@ def sendgpt(message, author):
     #model = "gpt-3.5-turbo",
     model="gpt-4",
     messages = [
-        {"role": "system", "content": "You're a very sassy robot. You answer questions in 127 characters or less"},
+        {"role": "system", "content": "Your name is GPT Voice. You're a very sassy robot. You're replying to questions in discord in 127 characters or . Don't use Hashtags."},
         {"role": "user", "content": cookedmessage}
         ],
         temperature=1.2,
@@ -97,9 +97,11 @@ async def gpt(ctx):
     else:
         voice = await channel.connect()
     print(ctx.message.content)
-    source = FFmpegPCMAudio(sendtts(sendgpt(str(ctx.message.content), str(ctx.message.author))))
+    reply = sendgpt(str(ctx.message.content), str(ctx.message.author))
+    source = FFmpegPCMAudio(sendtts(reply))
     try:
         voice.play(source)
+        await ctx.message.reply("Replying with: " + reply)
     except:
         await ctx.message.reply("Wait a few...")
 
