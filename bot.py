@@ -31,6 +31,9 @@ set_api_key(elevenlabs_api_key)
 discord_api_token = 'Your Discord Bot Token'
 discord_target_channel_id = "Which discord channel id do you wanna use? Add it here without quotes"
 
+# set TTS provider. "elevenlabs" or "google" TTS (free)
+tts_provider = "elevenlabs"
+
 prefix = "!"
 intents = discord.Intents().all()
 bot = commands.Bot(command_prefix=prefix, intents=intents)
@@ -59,18 +62,17 @@ def sendgpt(message, author):
 
 
 def sendtts(message):
-    ## google tts option
-    #tts = gTTS(message, tld='co.uk')
-    #tts.save("./1.mp3")
-    #return "./1.mp3"
-
-    ##begin test of elevenlabs
-    audio = generate(
-    text=message,
-    voice="Rachel",
-    )
-    save(audio, "./2.mp3")
-    return "./2.mp3"
+    if tts_provider == "elevenlabs":
+        audio = generate(
+        text=message,
+        voice="Rachel",
+        )
+        save(audio, "./2.mp3")
+        return "./2.mp3"
+    else:
+        tts = gTTS(message, tld='co.uk')
+        tts.save("./2.mp3")
+        return "./2.mp3"
 
 @bot.event
 async def on_message(message):
