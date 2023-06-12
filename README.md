@@ -20,3 +20,7 @@ debian:
 # Todo
 Todo:
     Change needed to await async calls in discord properly
+
+bot.py:  
+    Reply-To-Command demo  
+https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/8f28c2fc-ff7d-411f-9bcc-96c91d953174
