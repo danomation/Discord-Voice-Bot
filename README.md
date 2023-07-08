@@ -33,5 +33,7 @@ Todo:
 
 
 
-https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/b300c993-d208-4a13-9378-da38bd07beb8
+update - live weather added. (unmute video)   
+
+https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/fe5e4654-4a57-416f-bc6d-082206acf568
 
