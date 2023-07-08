@@ -1,40 +1,72 @@
-
+import os
 import openai
 import discord
+import time
 from gtts import gTTS
 from discord.ext import commands
 from discord import FFmpegPCMAudio
 from discord.utils import get
-from elevenlabs import generate, save
 from elevenlabs import set_api_key
+from elevenlabs import generate, save
+import requests
+import json
+import asyncio
 
 ##
-# Project GPT-Voice
-# This python file takes in a command !gpt texthere, sends to gpt-4, then replies with elevenlabs
-#
-# May not Work! VERY basic and buggy use at your own risk and NOT in production!
-#
 # Danomation
 # GitHub: https://github.com/danomation
-# Personal Site: https://sussyvr.com
 # Patreon https://www.patreon.com/Wintermute310
-# I'm broke as hell please donate xd
 ##
 
-# instructions: Add your openai api key and bot api token
-# set the target channel id for where to ask it questions with "!GPT message here"
-openai.api_key = "OPENAI API Key"
-elevenlabs_api_key = "Elevenlabs API Key"
+#api keys
+openai.api_key = ""
+OPEN_WEATHER_MAP_APIKEY = ''
+elevenlabs_api_key = ""
 set_api_key(elevenlabs_api_key)
-discord_api_token = 'Your Discord Bot Token'
-discord_target_channel_id = "Which discord channel id do you wanna use? Add it here without quotes"
+discord_api_token = ''
 
-# set TTS provider. "elevenlabs" or "google" TTS (free)
-tts_provider = "elevenlabs"
-
+#discord bot settings
+bot_name = "GPT-Voice"
+discord_target_channel_id = channelidhere
+voice_admin = useridhere
+#path for temporary mp3 files
+temp_path = "./"
 prefix = "!"
 intents = discord.Intents().all()
 bot = commands.Bot(command_prefix=prefix, intents=intents)
+
+#set your default tts provider
+#e.g. tts_provider = "google" or "elevenlabs"
+tts_provider = "google"
+
+
+def get_current_weather(location):
+    """Get the current weather in a given location"""
+    url = "http://api.openweathermap.org/geo/1.0/direct?q=" + location + "&limit=1&appid=" + OPEN_WEATHER_MAP_APIKEY + ""
+    res = requests.get(url)
+    data = res.json()
+    #data = json.dumps(data)
+    lat = str(data[0]["lat"])
+    lon = str(data[0]["lon"])
+    url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + OPEN_WEATHER_MAP_APIKEY + "&units=imperial"
+    res = requests.get(url)
+    data = res.json()
+    print(data)
+    humidity = data['main']['humidity']
+    pressure = data['main']['pressure']
+    wind = data['wind']['speed']
+    description = data['weather'][0]['description']
+    temp = data['main']['temp']
+    weather_info = {
+        "location": location,
+        "temperature": temp,
+        "humidity": humidity,
+        "pressure": pressure,
+        "wind speed": wind,
+        "unit": "fahrenheit",
+        "description": description,
+    }
+    return json.dumps(weather_info)
 
 
 def sendgpt(message, author):
@@ -43,34 +75,88 @@ def sendgpt(message, author):
     cookedmessage = ""
     for rawmsg in rawmessage:
         cookedmessage += rawmsg
-
-    response = openai.ChatCompletion.create(
-    #model = "gpt-3.5-turbo",
-    model="gpt-4",
     messages = [
-        {"role": "system", "content": "Your name is GPT Voice. You're a very sassy robot. You're replying to questions in discord in 127 characters or . Don't use Hashtags."},
+        {"role": "system",
+         "content": "Your name is" + bot_name + ". Reply Limit is 70 words. Don't use Hashtags or emojis. If the user asks who they are reply with " + author + "."},
         {"role": "user", "content": cookedmessage}
-        ],
+    ]
+    functions = [
+        {
+            "name": "get_current_weather",
+            "description": "Get the current weather in a given location",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "The city, e.g. San Francisco",
+                    },
+                },
+                # "required": ["location"],
+            },
+        },
+    ]
+    chat = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=messages,
+        functions=functions,
         temperature=1.2,
         max_tokens=1024,
-        user = author
+        user=author
     )
-    text = str(response['choices'][0]['message']['content'])
-    return text
+    convo = chat["choices"][0]["message"]
+    # check if the conversation included a function call
+    if convo.get("function_call"):
+        available_functions = {
+            "get_current_weather": get_current_weather,
+        }
+        # run function (adapted from openai's docs example)
+        function_name = convo["function_call"]["name"]
+        function_to_call = available_functions[function_name]
+        function_args = json.loads(convo["function_call"]["arguments"])
+        function_response = function_to_call(
+            # set location to the function args for location
+            location=function_args.get("location"),
+        )
+        # add the function response to the conversation
+        messages.append(convo)
+        messages.append(
+            {
+                "role": "function",
+                "name": function_name,
+                "content": function_response,
+            }
+        )
+        # wrap the conversation with the function call in a new conversation.
+        chat = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=messages,
+            functions=functions,
+            temperature=1.2,
+            max_tokens=1024,
+            user=author,
+        )
+    return str(chat["choices"][0]["message"]["content"])
 
 
 def sendtts(message):
+    time_stamp = str(time.time())
+    #set file path
+    file_path = temp_path + "reply_" + time_stamp + ".mp3"
     if tts_provider == "elevenlabs":
+        print(message)
         audio = generate(
         text=message,
         voice="Rachel",
+        model="eleven_monolingual_v1"
         )
-        save(audio, "./2.mp3")
-        return "./2.mp3"
+        save(audio, file_path)
+        return file_path
     else:
         tts = gTTS(message, tld='co.uk')
-        tts.save("./2.mp3")
-        return "./2.mp3"
+        tts.save(file_path)
+        return file_path
+
 
 @bot.event
 async def on_message(message):
@@ -97,13 +183,54 @@ async def gpt(ctx):
     else:
         voice = await channel.connect()
     print(ctx.message.content)
-    reply = sendgpt(str(ctx.message.content), str(ctx.message.author))
-    source = FFmpegPCMAudio(sendtts(reply))
-    try:
-        voice.play(source)
-        await ctx.message.reply("Replying with: " + reply)
-    except:
-        await ctx.message.reply("Wait a few...")
+    think = await ctx.send("thinking...")
+    if voice.is_playing() == False:
+        try:
+            async with channel.typing():
+                reply = sendgpt(str(ctx.message.content), str(ctx.message.author.display_name))
+                file_path = sendtts(str(reply))
+                source = FFmpegPCMAudio(file_path)
+                voice.play(source)
+                await ctx.message.reply("Replying with: " + reply)
+                await ctx.send(file=discord.File(file_path))
+        except:
+            raise
+    else:
+        holdup = await ctx.message.reply("Wait a few...")
+        await asyncio.sleep(3)
+        await holdup.delete()
+    if voice.is_playing() == False:
+        if os.path.exists(file_path):
+            os.remove(file_path)
+        else:
+            print("File could not be deleted")
+    await think.delete()
 
+@bot.command(
+    name='elevenlabs',
+    description='sends elevenlabs voice reply from gpt',
+    pass_context=True,
+)
+async def elevenlabs(ctx):
+    if ctx.message.author.id == voice_admin:
+        global tts_provider
+        tts_provider = "elevenlabs"
+        await ctx.message.reply("Changed TTS to ElevenLabs")
+    else:
+        await ctx.message.reply("Unauthorized.")
+
+
+@bot.command(
+    name='google',
+    description='sends elevenlabs voice reply from gpt',
+    pass_context=True,
+)
+async def google(ctx):
+    if ctx.message.author.id == voice_admin:
+        global tts_provider
+        tts_provider = "google"
+        await ctx.message.reply("Changed to Google TTS")
+    else:
+        await ctx.message.reply("Unauthorized.")
 
 bot.run(discord_api_token)
