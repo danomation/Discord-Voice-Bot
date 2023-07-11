@@ -16,10 +16,6 @@ debian:
     sudo apt-get install python3-pyaudio  
     python3 -m pip install -U discord.py  
     pip install gTTS  
-  
-# Todo
-Todo:
-    Change needed to await async calls in discord properly
 
 # Demo
 
