@@ -1,6 +1,5 @@
-# GPT-4-Discord-Voice  
+# GPT-4-Discord-Voice (GPT4 + ElevenLabs | google TTS -> Discord Voice)
 Simple Discord Voice Bot proof of concept  
-GPT4 + ElevenLabs | google TTS -> Discord Voice Bot  
 Danomation  
     GitHub: https://github.com/danomation  
     Patreon https://www.patreon.com/Wintermute310  
