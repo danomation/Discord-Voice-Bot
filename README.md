@@ -21,9 +21,6 @@ debian:
 Todo:
     Change needed to await async calls in discord properly
 
-
-
-
 # Demo
 
 ## bot.py:  
