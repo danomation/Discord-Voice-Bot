@@ -1,8 +1,7 @@
 # GPT-4-Discord-Voice
-Simple Discord Voice Bot proof of concept  
-Danomation  
-    GitHub: https://github.com/danomation  
-    Patreon https://www.patreon.com/Wintermute310  
+  Simple Discord Voice Bot proof of concept  
+  GitHub: https://github.com/danomation  
+  Patreon https://www.patreon.com/Wintermute310  
   
 # Install Notes
 debian:  
