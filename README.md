@@ -15,7 +15,10 @@ debian:
     https://discordpy.readthedocs.io/en/stable/discord.html  
 
 # Demo 
-Functions added (weather demo). Unmute to hear. https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/d8a50fb9-cf93-43b8-939c-b27a517bbb77
+Functions added (weather demo). Unmute to hear.
+
+https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/64f107f8-ac69-43b9-8a40-9707bf28bd4c
+
 
 
 
