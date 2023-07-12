@@ -1,5 +1,8 @@
 # GPT-4-Discord-Voice
   Simple Discord Voice Bot proof of concept  
+  Speak directly to GPT, adds external websites, weather, and more.  
+  type !vgpt to have bot join and listen for 5 seconds  
+  type !vtts for AI voice changer  
   GitHub: https://github.com/danomation  
   Patreon https://www.patreon.com/Wintermute310  
   
