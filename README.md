@@ -17,6 +17,5 @@ debian:
 # Demo 
 Functions added (weather demo). Unmute to hear.  
 
-[![Watch the video](https://i.imgur.com/wSXAL47.png)](https://youtu.be/lEyjm0AIPV4)   
-
+https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/057b2a06-4132-4e12-878f-e0fb05d58121
 
