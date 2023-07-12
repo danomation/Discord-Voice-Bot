@@ -27,3 +27,5 @@ https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/639d4d94-50d4-
 
 
 
+# Todo: 
+better cleanup of audio files :(
