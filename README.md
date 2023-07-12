@@ -17,5 +17,5 @@ debian:
 # Demo 
 Functions added (weather demo). Unmute to hear.  
 
-https://dys.team/stream/video/gpt-voice_update2.mp4
+[![Watch the video](https://dys.team/stream/video/gpt-voice_update2.mp4)
 
