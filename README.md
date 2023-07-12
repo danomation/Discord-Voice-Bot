@@ -28,5 +28,6 @@ https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/639d4d94-50d4-
 
 
 # Todo: 
+port to discord.js so you no longer have to type !vgpt before gpt query or !vtts before voice proxy    
 Better cleanup of audio files :(    
 Separate py files a bit to aid readability
