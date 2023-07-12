@@ -5,6 +5,7 @@
   
 # Install Notes
 debian:  
+    pip install py-cord  
     sudo apt install ffmpeg  
     pip install elevenlabs  
     pip install elevenlabslib  
