@@ -11,7 +11,6 @@ debian:
     pip install elevenlabslib  
     sudo apt-get install libportaudio2  
     sudo apt-get install python3-pyaudio  
-    python3 -m pip install -U discord.py  
     pip install gTTS  
     pip install cloudscraper   
     pip install beautifulsoup4   
