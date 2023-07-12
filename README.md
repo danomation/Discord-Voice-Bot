@@ -18,8 +18,12 @@ debian:
     https://discordpy.readthedocs.io/en/stable/discord.html  
 
 # Demo 
-# https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/64f107f8-ac69-43b9-8a40-9707bf28bd4c
 
+
+
+
+
+https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/639d4d94-50d4-499f-97fb-6fed25c96c43
 
 
 
