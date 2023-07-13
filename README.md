@@ -19,13 +19,19 @@ debian:
     pip install google-api-python-client   
     https://discordpy.readthedocs.io/en/stable/discord.html  
 
-# Demo 
+# Demo (upcomming feature: Trigger on voice)
 
 
 
 
 
-https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/639d4d94-50d4-499f-97fb-6fed25c96c43
+https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/e5f00cf1-53d9-49be-b31d-61a238466137
+
+
+
+
+
+https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/23b2698e-ce66-4641-baf0-4647446bd70c
 
 
 
