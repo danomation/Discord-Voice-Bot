@@ -24,13 +24,6 @@ debian:
 
 
 
-
-https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/e5f00cf1-53d9-49be-b31d-61a238466137
-
-
-
-
-
 https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/23b2698e-ce66-4641-baf0-4647446bd70c
 
 
