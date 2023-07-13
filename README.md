@@ -19,7 +19,7 @@ debian:
     pip install google-api-python-client   
     https://discordpy.readthedocs.io/en/stable/discord.html  
 
-# Demo (upcomming feature: Trigger on voice)
+# Demo (upcoming feature: Trigger on voice)
 
 
 
