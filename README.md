@@ -1,12 +1,11 @@
 # Discord Voice Bot
   Speak directly to GPT, adds external websites, weather, and more.  
-  type !vgpt to have bot join and listen for 5 seconds  
-  type !vtts for AI voice changer  
+  use push to talk. 
   GitHub: https://github.com/danomation  
   Patreon https://www.patreon.com/Wintermute310  
   
 # Install Notes
-(recent update will need node.js too)  
+(recent update will need node.js for now)  
 debian:  
     pip install py-cord  
     sudo apt install ffmpeg  
