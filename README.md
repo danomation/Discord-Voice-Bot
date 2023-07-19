@@ -5,7 +5,7 @@
   Patreon https://www.patreon.com/Wintermute310  
   
 # Install Notes
-(update: temporarily you will need node.js, discord.js, and @discordjs/voice also)  
+(update: temporarily you will need node.js, discord.js v13, and @discordjs/voice also)  
 debian:  
     pip install py-cord  
     sudo apt install ffmpeg  
