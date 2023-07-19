@@ -6,6 +6,7 @@
   Patreon https://www.patreon.com/Wintermute310  
   
 # Install Notes
+(recent update will need node.js too)  
 debian:  
     pip install py-cord  
     sudo apt install ffmpeg  
