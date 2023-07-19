@@ -22,10 +22,7 @@ debian:
 # Demo (upcoming feature: Trigger on voice)
 
 
-
-
-https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/23b2698e-ce66-4641-baf0-4647446bd70c
-
+https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/05b4932b-8db2-48c9-ba8c-4f42157e416a
 
 
 # Todo:   
