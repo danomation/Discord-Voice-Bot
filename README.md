@@ -1,6 +1,6 @@
 # Discord Voice Bot
   Speak directly to GPT, adds external websites, weather, and more.  
-  use push to talk. 
+  use push to talk.  
   GitHub: https://github.com/danomation  
   Patreon https://www.patreon.com/Wintermute310  
   
