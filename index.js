@@ -1,8 +1,8 @@
 import { Client, GatewayIntentBits, Events } from 'discord.js';
 import { joinVoiceChannel, SpeakingMap} from '@discordjs/voice';
-import { writeFileSync } from 'fs';
-import pkg from '@discordjs/opus';
-const { OpusEncoder } = pkg;
+#import { writeFileSync } from 'fs';
+#import pkg from '@discordjs/opus';
+#const { OpusEncoder } = pkg;
 
 // set these:
 // your voice channel
