@@ -19,13 +19,12 @@ debian:
     pip install google-api-python-client   
     https://discordpy.readthedocs.io/en/stable/discord.html  
 
-# Demo (upcoming feature: Trigger on voice)
+# Demo (new feature: Trigger on voice)
 
 
 https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/05b4932b-8db2-48c9-ba8c-4f42157e416a
 
 
-# Todo:   
-Implement my change to activate voice automatically 
-Better cleanup of audio files
+# Todo:    
+subclass the classes for the speaking event to remove node.js requirement  
 Separate py files a bit to aid readability
