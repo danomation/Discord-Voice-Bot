@@ -4,27 +4,28 @@
   GitHub: https://github.com/danomation  
   Patreon https://www.patreon.com/Wintermute310  
   
-# Install Notes
-(update: temporarily you will need node.js, discord.js v13, and @discordjs/voice also)  
-make 2 bots, add one for your helper-bot, and one for your bot.py bot    
-https://discordpy.readthedocs.io/en/stable/discord.html     
-ubuntu 22.04/debian:  
-        sudo apt update && sudo apt upgrade  
-        pip install -r requirements.txt    
-        sudo apt install ffmpeg    
-        sudo apt-get install libportaudio2  
-        sudo apt-get install python3-pyaudio       
-        mkdir helper-bot    
-        cd helper-bot    
-        sudo apt install nodejs    
-        sudo apt install npm    
-        npm install discord.js    
-        npm install @discordjs/voice    
+# Install Notes (ubuntu 22.04/debian)  
+    sudo apt update && sudo apt upgrade  
+    pip install -r requirements.txt    
+    sudo apt install ffmpeg    
+    sudo apt-get install libportaudio2  
+    sudo apt-get install python3-pyaudio       
+    mkdir helper-bot    
+    cd helper-bot    
+    sudo apt install nodejs    
+    sudo apt install npm    
+    npm install discord.js    
+    npm install @discordjs/voice    
+The node.js requirement will be depricated in future releases.
+For now, you will need node.js, discord.js  and @discordjs/voice
+Make 2 bots, add one for your helper-bot, and one for your bot.py bot
+Use this to help you create two bots using the discord developer portal
+https://discordpy.readthedocs.io/en/stable/discord.html  
         
-# Start bots
+# Start
     nohup python3 bot.py &    
     cd helper-bot    
-    nohup npm start &    ss
+    nohup npm start &    
 
 # Demo (new feature: Trigger on voice)
 
