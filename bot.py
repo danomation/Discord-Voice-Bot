@@ -374,8 +374,11 @@ async def on_message(message):
     # eventually py subclasses will replace this
     ##
     if "!record " in message.content and message.author.id == helper_bot_id:
-        if get(bot.voice_clients, guild=message.guild) != None:
-            if get(bot.voice_clients, guild=message.guild).is_playing == True:
+        if message.guild.voice_client != None:
+            if message.guild.voice_client.is_playing() == True:
+
+                # not if you want to verify the property there are other ways
+
                 await message.delete()
                 return
         contents = message.content.replace("!record ", "")
@@ -393,7 +396,7 @@ async def on_message(message):
             asyncio.sleep(1)
             member.move_to(channel)
         #If the bot isn't joined, then join it.
-        voice_client = get(bot.voice_clients, guild=voice.channel.guild)
+        voice_client = message.guild.voice_client
         if voice_client is None:
             vc = await voice.channel.connect()
         else:
@@ -435,8 +438,8 @@ async def on_message(message):
         except:
             raise
     if "!tts" in message.content:
-        if get(bot.voice_clients, guild=message.guild) != None:
-            if get(bot.voice_clients, guild=message.guild).is_playing == True:
+        if message.guild.voice_client != None:
+            if message.guild.voice_client.is_playing() == True:
                 await message.delete()
                 return
         contents = message.content.replace("!tts", "")
@@ -444,7 +447,7 @@ async def on_message(message):
         channel = message.author.voice.channel
         if not channel:
             return
-        voice = get(bot.voice_clients, guild=message.guild)
+        voice = message.guild.voice_client
         if voice and voice.is_connected():
             await voice.move_to(channel)
         else:
@@ -470,7 +473,7 @@ async def on_message(message):
         channel = message.author.voice.channel
         if not channel:
             return
-        voice = get(bot.voice_clients, guild=message.guild)
+        voice = message.guild.voice_client
         if voice and voice.is_connected():
             await voice.move_to(channel)
         else:
