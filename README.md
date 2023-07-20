@@ -6,12 +6,24 @@
   
 # Install Notes
 (update: temporarily you will need node.js, discord.js v13, and @discordjs/voice also)  
-debian:  
+ubuntu 22.04/debian:  
+    sudo apt update && sudo apt upgrade  
     pip install -r requirements.txt    
     sudo apt install ffmpeg    
     sudo apt-get install libportaudio2  
-    sudo apt-get install python3-pyaudio   
+    sudo apt-get install python3-pyaudio       
+    mkdir helper-bot    
+    cd helper-bot    
+    sudo apt install nodejs    
+    sudo apt install npm    
+    npm install discord.js    
+    npm install @discordjs/voice    
+    make 2 bots, add one for your helper-bot, and one for your bot.py bot    
     https://discordpy.readthedocs.io/en/stable/discord.html  
+        
+    nohup python3 bot.py &    
+    cd helper-bot    
+    nohup npm start &    
 
 # Demo (new feature: Trigger on voice)
 
