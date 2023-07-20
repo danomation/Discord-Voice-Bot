@@ -13,7 +13,7 @@
     sudo apt install npm    
     npm install discord.js    
     npm install @discordjs/voice    
-The node.js requirement will be depricated in future releases.  
+The node.js requirement will be deprecated in future releases.  
 Make 2 bots, add one for your helper-bot, and one for your bot.py bot  
 Use this to help you create two bots using the discord developer portal  
 https://discordpy.readthedocs.io/en/stable/discord.html  
