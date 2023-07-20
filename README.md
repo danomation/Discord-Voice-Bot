@@ -7,16 +7,10 @@
 # Install Notes
 (update: temporarily you will need node.js, discord.js v13, and @discordjs/voice also)  
 debian:  
-    pip install py-cord  
-    sudo apt install ffmpeg  
-    pip install elevenlabs  
-    pip install elevenlabslib  
+    pip install -r requirements.txt 
+    sudo apt install ffmpeg    
     sudo apt-get install libportaudio2  
-    sudo apt-get install python3-pyaudio  
-    pip install gTTS  
-    pip install cloudscraper   
-    pip install beautifulsoup4   
-    pip install google-api-python-client   
+    sudo apt-get install python3-pyaudio   
     https://discordpy.readthedocs.io/en/stable/discord.html  
 
 # Demo (new feature: Trigger on voice)
