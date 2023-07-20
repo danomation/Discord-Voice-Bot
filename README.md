@@ -6,10 +6,8 @@
   
 # Install Notes (ubuntu 22.04/debian):  
     sudo apt update && sudo apt upgrade  
-    pip install -r requirements.txt    
-    sudo apt install ffmpeg    
-    sudo apt-get install libportaudio2  
-    sudo apt-get install python3-pyaudio       
+    sudo apt install ffmpeg python3-pyaudio libportaudio2
+    pip install -r requirements.txt     
     cd helper-bot    
     sudo apt install nodejs    
     sudo apt install npm    
