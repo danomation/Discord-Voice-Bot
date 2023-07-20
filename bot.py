@@ -345,7 +345,7 @@ def sendtts(message):
         message = message.replace("Artificial Intelligence", "major bassmole")
     #    
     ##
-    #set file path
+    # set file path, create tts
     time_stamp = str(time.time())
     file_path = temp_folder_tts + "reply_" + time_stamp + ".mp3"
     if tts_provider == "elevenlabs":
@@ -363,6 +363,8 @@ def sendtts(message):
         tts = gTTS(message, tld='us') # tld='co.uk')
         tts.save(file_path)
         return file_path
+    #
+    ##
 
 @bot.event
 async def on_message(message):
