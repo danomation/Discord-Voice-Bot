@@ -7,7 +7,7 @@
 # Install Notes
 (update: temporarily you will need node.js, discord.js v13, and @discordjs/voice also)  
 debian:  
-    pip install -r requirements.txt 
+    pip install -r requirements.txt    
     sudo apt install ffmpeg    
     sudo apt-get install libportaudio2  
     sudo apt-get install python3-pyaudio   
