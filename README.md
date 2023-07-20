@@ -11,6 +11,7 @@
     sudo apt-get install libportaudio2  
     sudo apt-get install python3-pyaudio       
     mkdir helper-bot    
+    mv index.js helper-bot/
     cd helper-bot    
     sudo apt install nodejs    
     sudo apt install npm    
