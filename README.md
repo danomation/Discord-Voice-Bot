@@ -4,7 +4,7 @@
   GitHub: https://github.com/danomation  
   Patreon https://www.patreon.com/Wintermute310  
   
-# Install Notes (ubuntu 22.04/debian)  
+# Install Notes (ubuntu 22.04/debian):  
     sudo apt update && sudo apt upgrade  
     pip install -r requirements.txt    
     sudo apt install ffmpeg    
@@ -21,12 +21,12 @@ Use this to help you create two bots using the discord developer portal
 https://discordpy.readthedocs.io/en/stable/discord.html  
 sign up for openai, elevenlabs openweathermap and google search apis  
         
-# Start
+# Start:
     nohup python3 bot.py &    
     cd helper-bot    
     nohup npm start &    
 
-# Demo (new feature: Trigger on voice)
+# Demo (new feature: Trigger on voice):
 
 
 https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/05b4932b-8db2-48c9-ba8c-4f42157e416a
