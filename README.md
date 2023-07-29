@@ -27,8 +27,7 @@ sign up for openai, elevenlabs openweathermap and google search apis
 # Demo (Pending update - Speedup):
 
 
-
-https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/228eceea-1730-4fd3-8f34-b46304b881e0
+[Voice Speedup Demo](https://www.youtube.com/watch?v=XSiLbuzFt4U)
 
 
 
