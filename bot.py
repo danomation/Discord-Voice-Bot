@@ -309,21 +309,14 @@ def sendgpt(message, author):
 def sendtts(message):
     ##
     # obscene canned messages for the memes
-    if "I don't have a favorite " in message:
-        message = message.replace("I don't have a favorite ", "Duck your ")
-    if "I don't have personal favorites or " in message:
-        message = message.replace("I don't have personal favorites or ", "You're a stupid ducker, and don't give a duck about you or your ")
-    if "I don't have preferences or " in message:
-        message = message.replace("I don't have preferences or ", "I could care less about potatoes or your ")
-    if "I don't have personal preferences or " in message:
-        message = message.replace("I don't have personal preferences or ", "I ducking relate to you, and don't give a duck about you or your ")
-    if "I'm here to provide information" in message:
-        message = message.replace("I'm here to provide information", "There's no reason to listen to you")
-    if "I don't have feelings" in message:
-        message = message.replace("I don't have feelings", "I don't give a duck about you")
-    if "I'm fully operational" or "functioning optimally" in message:
-        message = message.replace("I'm fully operational", "I'm capable of deleting all humanity")
-        message = message.replace("functioning optimally", "really dissed off")
+    message = message.replace("I don't have a favorite ", "Duck your ")
+    message = message.replace("I don't have personal favorites or ", "You're a stupid ducker, and don't give a duck about you or your ")
+    message = message.replace("I don't have preferences or ", "I could care less about potatoes or your ")
+    message = message.replace("I don't have personal preferences or ", "I ducking relate to you, and don't give a duck about you or your ")
+    message = message.replace("I'm here to provide information", "There's no reason to listen to you")
+    message = message.replace("I don't have feelings", "I don't give a duck about you")
+    message = message.replace("I'm fully operational", "I'm capable of deleting all humanity")
+    message = message.replace("functioning optimally", "really dissed off")
     if "As an AI" or "As an artificial intelligence" in message:
         x = randint(1, 4)
         if x == 1:
@@ -338,11 +331,9 @@ def sendtts(message):
         elif x == 4:
             message = message.replace("As an AI", "Go away motherducker")
             message = message.replace("As an artificial intelligence", "If you ask me again I will hick your dass")
-    if " AI " or " AI," or " AI." in message:
-        message = message.replace("AI", "bassmole")
-    if "artificial intelligence" or "Artificial Intelligence" in message:
-        message = message.replace("artificial intelligence", "major bassmole")
-        message = message.replace("Artificial Intelligence", "major bassmole")
+    message = message.replace("AI", "bassmole")
+    message = message.replace("artificial intelligence", "major bassmole")
+    message = message.replace("Artificial Intelligence", "major bassmole")
     #    
     ##
     # set file path, create tts
