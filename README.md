@@ -24,10 +24,16 @@ sign up for openai, elevenlabs openweathermap and google search apis
     cd helper-bot    
     nohup npm start &    
 
-# Demo (new feature: Trigger on voice):
+# Demo (Pending update - Speedup):
 
 
-https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/05b4932b-8db2-48c9-ba8c-4f42157e416a
+
+
+https://github.com/danomation/GPT-4-Discord-Voice/assets/17872783/1241a7b6-e0d6-4f6a-b5b8-a5004688be60
+
+
+
+
 
 
 # Todo:    
