@@ -24,7 +24,7 @@ sign up for openai, elevenlabs openweathermap and google search apis
     cd helper-bot    
     nohup npm start &    
 
-# Demo (Pending update - Speedup):
+# Demo (updated - Speedup):
 
 
 
