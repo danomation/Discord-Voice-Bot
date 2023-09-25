@@ -1,17 +1,13 @@
 import { Client, GatewayIntentBits, Events } from 'discord.js';
 import { joinVoiceChannel, SpeakingMap} from '@discordjs/voice';
-
-// set these:
-// your voice channel
-const voice_channel_id = ''
-// your bot.py bot id
-const bot_py_id = ''
-// your discord token
-const discord_token = ''
+import { writeFileSync } from 'fs';
+import pkg from '@discordjs/opus';
+const { OpusEncoder } = pkg;
+const speakingStates = new Map();
 
 const client = new Client({
   intents: [
-    GatewayIntentBits.Guilds, // These are the permissions the bot has
+    GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMembers,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
@@ -21,7 +17,7 @@ const client = new Client({
 
 
 client.once('ready', async () => {
-  const channel = client.channels.resolve(voice_channel_id);
+  const channel = client.channels.resolve('your-voice-channel');
   if (!channel) return console.error("The channel was not found!");
   const connection = joinVoiceChannel({
     channelId: channel.id,
@@ -30,14 +26,24 @@ client.once('ready', async () => {
   });
 
   connection.receiver.speaking.on('start', async() => {
-    const myuser = Array.from(connection.receiver.speaking.users.keys())[0];
-    // ironically this is the trigger for the main bot right now. I know it's hacky as heck.
-    if (myuser != bot_py_id) channel.send("!record "+ myuser);
-    console.log(myuser + " started speaking");
+    var speakinguser = Array.from(connection.receiver.speaking.users.keys())[0];
+    if (speakinguser != your-discord-voice-bot-id && speakinguser != your-discord-bot-helper-id){
+        global.myuser = speakinguser;
+        global.mymessage = await channel.send("!record "+ myuser);
+        console.log(global.myuser + " started speaking");
+    }
   });
-  
-// might not need this? Idk I'm a noob
+
+  connection.receiver.speaking.on('end', async() => {
+    var speakinguser = Array.from(connection.receiver.speaking.users.keys())[0];
+    if (speakinguser != your-discord-voice-bot-id && speakinguser != your-discord-bot-helper-id7){
+        const theuser = Array.from(connection.receiver.speaking.users.keys())[0];
+        if (myuser == global.myuser) global.mymessage.edit(mymessage.content + " !end")
+        console.log(myuser + " stopped speaking");
+    }
+  });
+
 });
 
 
-client.login(discord_token);
+client.login('discord-bot-helper-token);
