@@ -5,6 +5,14 @@ import pkg from '@discordjs/opus';
 const { OpusEncoder } = pkg;
 const speakingStates = new Map();
 
+// set these:
+// your voice channel
+const voice_channel_id = ''
+// your bot.py bot id
+const bot_py_id = ''
+// your discord token
+const discord_token = ''
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -17,7 +25,7 @@ const client = new Client({
 
 
 client.once('ready', async () => {
-  const channel = client.channels.resolve('your-voice-channel');
+  const channel = client.channels.resolve(voice_channel_id);
   if (!channel) return console.error("The channel was not found!");
   const connection = joinVoiceChannel({
     channelId: channel.id,
@@ -27,7 +35,7 @@ client.once('ready', async () => {
 
   connection.receiver.speaking.on('start', async() => {
     var speakinguser = Array.from(connection.receiver.speaking.users.keys())[0];
-    if (speakinguser != your-discord-voice-bot-id && speakinguser != your-discord-bot-helper-id){
+    if (speakinguser != bot_py_id){
         global.myuser = speakinguser;
         global.mymessage = await channel.send("!record "+ myuser);
         console.log(global.myuser + " started speaking");
@@ -36,7 +44,7 @@ client.once('ready', async () => {
 
   connection.receiver.speaking.on('end', async() => {
     var speakinguser = Array.from(connection.receiver.speaking.users.keys())[0];
-    if (speakinguser != your-discord-voice-bot-id && speakinguser != your-discord-bot-helper-id7){
+    if (speakinguser != bot_py_id){
         const theuser = Array.from(connection.receiver.speaking.users.keys())[0];
         if (myuser == global.myuser) global.mymessage.edit(mymessage.content + " !end")
         console.log(myuser + " stopped speaking");
@@ -46,4 +54,4 @@ client.once('ready', async () => {
 });
 
 
-client.login('discord-bot-helper-token);
+client.login(discord_token);
