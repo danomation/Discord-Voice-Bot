@@ -5,4 +5,5 @@ elevenlabs==0.2.*
 requests==2.31.*
 cloudscraper==1.2.*
 bs4==0.0.*
+openai==0.28.1
 ...
